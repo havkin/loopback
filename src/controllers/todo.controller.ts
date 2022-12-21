@@ -41,12 +41,12 @@ export class TodoController {
         'application/json': {
           schema: getModelSchemaRef(Todo, {
             title: 'NewTodo',
-            exclude: ['id'],
+            // exclude: ['id'],
           }),
         },
       },
     })
-    todo: Omit<Todo, 'id'>,
+    todo: Todo
   ): Promise<Todo> {
     if (todo.remindAtAddress) {
       const geo = await this.geoService.geocode(todo.remindAtAddress);
